@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Change.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Change"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisuslStateGrop">
+                <VisualState x:Name="VisuilStateOne">
+                    <VisualState.Setters>
+                        <Setter Target="OneGrid.(Grid.ColumnSpan)" Value="1"></Setter>
+                        <Setter Target="TwoGrid.(Grid.ColumnSpan)" Value="1"></Setter>
+                        <Setter Target="OneGrid.Visibility" Value="Visible"></Setter>
+                        <Setter Target="TwoGrid.Visibility" Value="Visible"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisuilStateTwo">
+                    <VisualState.Setters>
+                        <Setter Target="OneGrid.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="TwoGrid.(Grid.ColumnSpan)" Value="2"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisuilStateThree">
+                    <VisualState.Setters>
+                        <Setter Target="TwoGrid.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="OneGrid.(Grid.ColumnSpan)" Value="1"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="ColOne" Width="Auto"></ColumnDefinition>
+            <ColumnDefinition x:Name="ColTow" Width="2*"></ColumnDefinition>
+            <ColumnDefinition x:Name="ColThree" Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <ListView Name="ListView" SelectionChanged="ListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="30" Text="{Binding conut}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" x:Name="OneGrid" Visibility="Visible" Grid.ColumnSpan="1">
+            <StackPanel>
+                <TextBox Name="TextBox" Text="123" Margin="0,50,0,0"  BorderThickness="4" FontSize="30"></TextBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="save_bon" Grid.Column="0" Height="30" Content="保存" HorizontalAlignment="Stretch" BorderBrush="#FF030303" BorderThickness="2,2,1,2" Click="save_bon_Click"></Button>
+                    <Button x:Name="remove_bon" Grid.Column="1" Height="30" Content="删除" HorizontalAlignment="Stretch" BorderBrush="#FF030303" BorderThickness="1,2,2,2" Click="remove_bon_Click"></Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" x:Name="TwoGrid" Visibility="Visible" Grid.ColumnSpan="1">
+            <TextBlock x:Name="text_block" FontSize="50" Margin="0,50,0,0"></TextBlock>
+        </Grid>
+    </Grid>
+    <!-- 
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Orientation="Horizontal">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisuslStateGrop">
+                <VisualState x:Name="VisuilStateOne">
+                    <VisualState.Setters>
+                        <Setter Target="ColTow.Visibility" Value="Visible"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisuilStateTwo">
+                    <VisualState.Setters>
+                        <Setter Target="ColTow.Visibility" Value="Collapsed"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel Name="ColOne" >
+            <TextBlock Text="123456" FontSize="50"></TextBlock>
+        </StackPanel>
+        <StackPanel Name="ColTow" Visibility="Visible" Background="Red" >
+            <TextBlock Text="123456" FontSize="50"></TextBlock>
+        </StackPanel>
+        <StackPanel Name="ColThree" Background="Black" >
+            <TextBlock Text="123456" FontSize="50"></TextBlock>
+        </StackPanel>
+    </StackPanel>
+         -->
+</Page>
